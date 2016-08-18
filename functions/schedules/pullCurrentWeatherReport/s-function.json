@@ -1,0 +1,34 @@
+{
+  "name": "pullCurrentWeatherReport",
+  "runtime": "nodejs4.3",
+  "description": "Serverless Lambda function for project: MyWeatherBot",
+  "customName": false,
+  "customRole": false,
+  "handler": "functions/schedules/pullCurrentWeatherReport/handler.handler",
+  "timeout": 6,
+  "memorySize": 1024,
+  "authorizer": {},
+  "custom": {
+    "excludePatterns": []
+  },
+  "endpoints": [],
+  "events": [
+    {
+      "name": "syncCurrent",
+      "type": "schedule",
+      "config": {
+        "schedule": "cron(5/30 * * * ? *)",
+        "enabled": true
+      }
+    }
+  ],
+  "environment": {
+    "SERVERLESS_PROJECT": "${project}",
+    "SERVERLESS_STAGE": "${stage}",
+    "SERVERLESS_REGION": "${region}"
+  },
+  "vpc": {
+    "securityGroupIds": [],
+    "subnetIds": []
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "pullWeatherWarningInformation",
+  "runtime": "nodejs4.3",
+  "description": "Serverless Lambda function for project: MyWeatherBot",
+  "customName": false,
+  "customRole": false,
+  "handler": "functions/schedules/pullWeatherWarningInformation/handler.handler",
+  "timeout": 6,
+  "memorySize": 1024,
+  "authorizer": {},
+  "custom": {
+    "excludePatterns": []
+  },
+  "endpoints": [],
+  "events": [
+    {
+      "name": "syncWarning",
+      "type": "schedule",
+      "config": {
+        "schedule": "rate(10 minutes)",
+        "enabled": true
+      }
+    }
+  ],
+  "environment": {
+    "SERVERLESS_PROJECT": "${project}",
+    "SERVERLESS_STAGE": "${stage}",
+    "SERVERLESS_REGION": "${region}"
+  },
+  "vpc": {
+    "securityGroupIds": [],
+    "subnetIds": []
+  }
+}
